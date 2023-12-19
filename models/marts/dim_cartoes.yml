@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: dim_cartoes
+    description: Tabela dimensão cartões.
+    columns:
+      - name: id_cartao
+        description: Chave primária da dimensão de cartões.
+        tests:
+          - unique
+          - not_null
+
+      - name: tipo_cartao
+        description: Coluna com tipo do cartão.
+        tests:
+          - not_null
