@@ -60,3 +60,16 @@ sources:
           description: Coluna com nome do estado.
           tests:
             - not_null
+    - name: creditcard
+      description: Tabela com informações dos cartões.
+      columns:
+        - name: creditcardid
+          description: Coluna com ID dos cartões.
+          tests:
+            - unique
+            - not_null
+        - name: cardtype
+          description: Coluna com tipo dos cartões.
+          tests:
+            - not_null
+                
