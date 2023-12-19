@@ -1,0 +1,62 @@
+version: 2
+sources:
+  - name: sap-adw
+    description: Fonte SAP de vendas da Adventure Works
+    schema: sap_adw
+    tables:
+    - name: countryregion
+      description: Tabela com informações dos países.
+      columns:
+        - name: countryregioncode
+          description: Coluna com código dos países.
+          tests:
+            - unique
+            - not_null
+        - name: name
+          description: Coluna com nome dos países.
+          
+    - name: address
+      description: Tabela com informações das cidades.
+      columns:
+        - name: addressid
+          description: Coluna com ID do endereço.
+          tests:
+            - unique
+            - not_null
+        - name: addressline1
+          description: Coluna com informação de endereços.
+          tests:
+            - not_null
+        - name: city
+          description: Coluna com nome da cidade.
+          tests:
+            - not_null    
+        - name: stateprovinceid
+          description: Coluna com ID do estado.
+          tests:
+            - not_null
+        - name: postalcode
+          description: Coluna com código postal da cidade.
+          tests:
+            - not_null    
+    - name: stateprovince  
+      description: Tabela com informações de estado (território).
+      columns:
+        - name: stateprovinceid
+          description: Coluna com chave primária de estados.
+          tests:
+            - unique
+            - not_null
+        - name: stateprovincecode
+          description: Coluna com código do estado.
+          tests:
+            - unique
+            - not_null      
+        - name: countryregioncode
+          description: Coluna com código do país.
+          tests:
+            - not_null
+        - name: name
+          description: Coluna com nome do estado.
+          tests:
+            - not_null

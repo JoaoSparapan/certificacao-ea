@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: dim_enderecos
+    description: Tabela dimensão endereços.
+    columns:
+      - name: sk_endereco
+        description: Chave primária da dimensão de endereços.
+        tests:
+          - unique
+          - not_null
+
+      - name: id_cidade
+        description: Coluna com ID da cidade.
+        
+      - name: nome_cidade
+        description: Coluna com nome da cidade.
+
+      - name: codigo_postal_cidade
+        description: Coluna com código postal da cidade.
+
+      - name: endereco_cidade
+        description: Coluna do endereço.
+
+      - name: codigo_estado
+        description: Coluna com código do estado.
+
+      - name: nome_estado
+        description: Coluna com nome do estado.
+
+      - name: codigo_pais
+        description: Coluna com o código do país.
+
+      - name: nome_pais
+        description: Coluna com o nome do país.
