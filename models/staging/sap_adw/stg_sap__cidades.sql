@@ -6,7 +6,7 @@ with
            , cast(city as string) as nome_cidade
            , cast(stateprovinceid as int) as id_estado
            , cast(postalcode as string) as codigo_postal_cidade
-        from {{ source('sap-adw', 'address') }}
+        from {{ source('sap_adw', 'address') }}
     )
 
 select * from fonte_cidades

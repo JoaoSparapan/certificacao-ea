@@ -1,8 +1,8 @@
 with
-    cartoes as (
+    stg_cartoes as (
     select *
     from {{ ref('stg_sap__cartoes') }}
 )
 
 SELECT *
-FROM cartoes
+FROM stg_cartoes
