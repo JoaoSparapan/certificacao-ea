@@ -18,8 +18,8 @@ with
             , pedidos_motivos.id_motivo
             , motivos_vendas.nome_motivo
             , motivos_vendas.tipo_motivo
-        from stg_pedidos_motivos as pedidos_motivos
-        left join stg_motivos_vendas as motivos_vendas on pedidos_motivos.id_motivo = motivos_vendas.id_motivo
+        from stg_pedidos_motivos pedidos_motivos
+        left join stg_motivos_vendas motivos_vendas on pedidos_motivos.id_motivo = motivos_vendas.id_motivo
     )
 
 

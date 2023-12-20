@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: dim_produtos
+    description: Tabela dimensão produtos.
+    columns:
+        - name: id_produto
+          description: Coluna com o ID dos produtos.
+          tests:
+            - unique
+            - not_null
+
+        - name: nome_produto
+          description: Coluna com o nome dos produtos.
+
+        - name: nome_categoria_produto
+          description: Coluna com o nome da categoria dos produtos.
+
+        - name: nome_subcategoria_produto
+          description: Coluna com o nome da subcategoria dos produtos.
+
+        - name: quantidade_minima_produto
+          description: Coluna com a quantidade de estoque recomendada do produto.
+
+        - name: nivel_reabastecimento_produto
+          description: Coluna com a quantidade que faz necessário o reabastecimento do produto.
+
+        - name: custo_produto
+          description: Coluna com o custo do produto.
+
+        - name: preco_listado_produto
+          description: Coluna com o preço do produto.
+

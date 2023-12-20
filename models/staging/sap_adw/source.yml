@@ -5,85 +5,85 @@ sources:
     schema: sap_adw
     tables:
     - name: countryregion
-      description: Tabela com informações dos países.
+      description: Tabela com as informações dos países.
       columns:
         - name: countryregioncode
-          description: Coluna com código dos países.
+          description: Coluna com o código dos países.
           tests:
             - unique
             - not_null
         - name: name
-          description: Coluna com nome dos países.
+          description: Coluna com o nome dos países.
           
     - name: address
-      description: Tabela com informações das cidades.
+      description: Tabela com as informações das cidades.
       columns:
         - name: addressid
-          description: Coluna com ID do endereço.
+          description: Coluna com o ID do endereço.
           tests:
             - unique
             - not_null
         - name: addressline1
-          description: Coluna com informação de endereços.
+          description: Coluna com a informação de endereço.
           tests:
             - not_null
         - name: city
-          description: Coluna com nome da cidade.
+          description: Coluna com o nome da cidade.
           tests:
             - not_null    
         - name: stateprovinceid
-          description: Coluna com ID do estado.
+          description: Coluna com o ID do estado.
           tests:
             - not_null
         - name: postalcode
-          description: Coluna com código postal da cidade.
+          description: Coluna com o código postal da cidade.
           tests:
             - not_null
 
     - name: stateprovince  
-      description: Tabela com informações de estado (território).
+      description: Tabela com as informações de estado (território).
       columns:
         - name: stateprovinceid
-          description: Coluna com chave primária de estados.
+          description: Coluna com a chave primária de estados.
           tests:
             - unique
             - not_null
         - name: stateprovincecode
-          description: Coluna com código do estado.
+          description: Coluna com o código do estado.
           tests:
             - unique
             - not_null      
         - name: countryregioncode
-          description: Coluna com código do país.
+          description: Coluna com o código do país.
           tests:
             - not_null
         - name: name
-          description: Coluna com nome do estado.
+          description: Coluna com o nome do estado.
           tests:
             - not_null
 
     - name: creditcard
-      description: Tabela com informações dos cartões.
+      description: Tabela com as informações dos cartões.
       columns:
         - name: creditcardid
-          description: Coluna com ID dos cartões.
+          description: Coluna com o ID dos cartões.
           tests:
             - unique
             - not_null
         - name: cardtype
-          description: Coluna com tipo dos cartões.
+          description: Coluna com o tipo dos cartões.
           tests:
             - not_null
 
     - name: salesorderheadersalesreason
-      description: Tabela com informações dos pedidos e seus respectivos motivos.
+      description: Tabela com as informações dos pedidos e seus respectivos motivos.
       columns:
         - name: salesorderid
-          description: Coluna com ID dos pedidos de venda.
+          description: Coluna com o ID dos pedidos de venda.
           tests:
             - not_null
         - name: salesreasonid
-          description: Coluna com ID dos motivos dos pedidos.
+          description: Coluna com o ID dos motivos dos pedidos.
           tests:
             - not_null
 
@@ -91,7 +91,7 @@ sources:
       description: Tabela com os motivos das vendas.
       columns:
         - name: salesreasonid
-          description: Coluna com ID para cada motivo das vendas.
+          description: Coluna com o ID para cada motivo das vendas.
           tests:
             - unique
             - not_null
@@ -105,3 +105,68 @@ sources:
             - not_null
             - accepted_values:
                 values: ['Other', 'Marketing', 'Promotion']
+
+    - name: productcategory
+      description: Tabela com as informações das categorias dos produtos.
+      columns:
+        - name: productcategoryid
+          description: Coluna com o ID das categorias dos produtos.
+          tests:
+            - unique
+            - not_null
+        - name: name
+          description: Coluna com o nome das categorias dos produtos.
+          tests:
+            - not_null
+    
+    - name: productsubcategory
+      description: Tabela com as informações das subcategorias dos produtos.
+      columns:
+        - name: productsubcategoryid
+          description: Coluna com o ID das subcategorias dos produtos.
+          tests:
+            - unique
+            - not_null
+        - name: productcategoryid
+          description: Coluna com ID das categorias dos produtos. Chave estrangeira da tabela "productcategory".
+          tests:
+            - not_null
+            - relationships:
+                field: id_categoria_produto
+                to: ref('stg_sap__subcategorias_produtos')
+        - name: name
+          description: Coluna com nome das subcategorias dos produtos.
+          tests:
+            - not_null
+    - name: product
+      description: Tabela com informações dos produtos.
+      columns:
+        - name: productid
+          description: Coluna com o ID dos produtos.
+          tests:
+            - unique
+            - not_null
+        - name: productsubcategoryid
+          description: Coluna com o ID das subcategorias dos produtos.
+          tests:
+            - not_null
+        - name: name
+          description: Coluna com o nome dos produtos.
+          tests:
+            - not_null
+        - name: safetystocklevel
+          description: Coluna com a quantidade de estoque recomendada do produto.
+          tests:
+            - not_null
+        - name: reorderpoint
+          description: Coluna com a quantidade que faz necessário o reabastecimento do produto.
+          tests:
+            - not_null
+        - name: standardcost
+          description: Coluna com o custo do produto.
+          tests:
+            - not_null
+        - name: listprice
+          description: Coluna com o preço do produto.
+          tests:
+            - not_null
