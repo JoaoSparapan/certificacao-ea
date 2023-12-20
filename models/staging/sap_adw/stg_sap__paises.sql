@@ -3,7 +3,7 @@ with
         select
             cast(countryregioncode as string) as codigo_pais
             , cast(name as string) as nome_pais
-        from {{ source('sap-adw', 'countryregion') }}
+        from {{ source('sap_adw', 'countryregion') }}
     )
 
 select * from fonte_paises

@@ -12,9 +12,9 @@ with
     ,cast(format_date('%W', d) as int) as dia_da_semana
     ,cast(format_date('%A', d) as string) as nome_dia_da_semana
     ,cast((case when format_date('%A', d) in ('sunday', 'saturday') then true else false end) as bool) as dia_util,
-from (
-    select *
-    from unnest(generate_date_array('1990-01-01', '2045-01-01', interval 1 day)) as d )
+    from ( 
+        select *
+        from unnest(generate_date_array('1990-01-01', '2045-01-01', interval 1 day)) as d 
+    )
 )
-select *
-from fonte_calendario
+select * from fonte_calendario

@@ -5,7 +5,7 @@ with
             , cast(stateprovincecode as string) as codigo_estado
             , cast(countryregioncode as string) as codigo_pais
             , cast(name as string) as nome_estado
-        from {{ source('sap-adw', 'stateprovince') }}
+        from {{ source('sap_adw', 'stateprovince') }}
     )
 
 select * from fonte_estados

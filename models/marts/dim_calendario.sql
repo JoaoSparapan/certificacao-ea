@@ -1,8 +1,8 @@
 with 
-    calendario as (
+    stg_calendario as (
     select *
     from {{ ref('stg_sap__calendario') }}
     )
 
 select *
-from calendario
+from stg_calendario
