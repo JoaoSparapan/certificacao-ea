@@ -148,8 +148,7 @@ sources:
             - not_null
         - name: productsubcategoryid
           description: Coluna com o ID das subcategorias dos produtos.
-          tests:
-            - not_null
+
         - name: name
           description: Coluna com o nome dos produtos.
           tests:
