@@ -25,8 +25,8 @@ with
             , cidades.codigo_postal_cidade
             , cidades.endereco_cidade
             , estados.codigo_estado
-            , estados.nome_estado
             , paises.codigo_pais
+            , estados.nome_estado
             , paises.nome_pais
 
         from stg_cidades as cidades
