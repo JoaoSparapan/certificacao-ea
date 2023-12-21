@@ -169,3 +169,72 @@ sources:
           description: Coluna com o preço do produto.
           tests:
             - not_null
+
+    - name: person
+      description: Tabela com as informações gerais de pessoas.
+      columns:
+        - name: businessentityid
+          description: Coluna com o ID da pessoas.
+          tests:
+            - unique
+            - not_null
+        - name: persontype
+          description: Coluna com a sigla do tipo da pessoa.
+          tests:
+            - not_null
+        - name: title
+          description: Coluna com o pronome de tratamento da pessoa.
+        
+        - name: firstname
+          description: Coluna com o primeiro nome da pessoa.
+          tests:
+            - not_null             
+        - name: middlename
+          description: Coluna com o nome do meio da pessoa.
+        - name: lastname
+          description: Coluna com o último sobrenome da pessoa.
+          tests:
+            - not_null
+        - name: suffix
+          description: Coluna com o sufixo da pessoa.
+    - name: customer
+      description: Tabela com as informações gerais dos clientes.
+      columns:
+        - name: customerid
+          description: Coluna com o ID do cliente.
+          tests:
+            - unique
+            - not_null
+        - name: personid
+          description: Coluna com com o ID de pessoa.
+        - name: storeid
+          description: Coluna com o ID da loja.
+        - name: territoryid
+          description: Coluna com o ID do território.
+    - name: store
+      description: Tabela com as informações gerais da loja.
+      columns:
+        - name: businessentityid
+          description: Coluna com o ID da loja.
+          tests:
+            - unique
+            - not_null
+        - name: name
+          description: Coluna com o nome da loja.
+          tests:
+            - not_null
+        - name: salespersonid
+          description: Coluna com o ID do vendedor.
+          tests:
+            - not_null
+    - name: salesterritory
+      description: Tabela com as informações dos territórios de vendas.
+      columns:
+        - name: territoryid
+          description: Coluna com o ID do território de vendas.
+        - name: name
+          description: Coluna com o nome do território de vendas.
+        - name: countryregioncode
+          description: Coluna com o código do país que o território de vendas pertence.
+        - name: group
+          description: Coluna com o nome do grupo que o território de vendas pertence.
