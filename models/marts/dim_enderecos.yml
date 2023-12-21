@@ -9,27 +9,47 @@ models:
         tests:
           - unique
           - not_null
-
       - name: id_cidade
         description: Coluna com ID da cidade.
-        
+        tests:
+          - not_null
+      - name: id_territorio
+        description: Coluna com ID do território.
+        tests:
+          - not_null 
       - name: nome_cidade
         description: Coluna com nome da cidade.
-
+        tests:
+          - not_null
       - name: codigo_postal_cidade
         description: Coluna com código postal da cidade.
-
+        tests:
+          - not_null
       - name: endereco_cidade
         description: Coluna do endereço.
-
+        tests:
+          - not_null
       - name: codigo_estado
         description: Coluna com código do estado.
-
+        tests:
+          - not_null
       - name: nome_estado
         description: Coluna com nome do estado.
-
+        tests:
+          - not_null
       - name: codigo_pais
         description: Coluna com o código do país.
-
+        tests:
+          - not_null
       - name: nome_pais
         description: Coluna com o nome do país.
+        tests:
+          - not_null
+      - name: nome_territorio
+        description: Coluna com o nome do território.
+        tests:
+          - not_null
+      - name: grupo_territorio
+        description: Coluna com o grupo em que território está contido.
+        tests:
+          - not_null  
