@@ -138,6 +138,7 @@ sources:
           description: Coluna com nome das subcategorias dos produtos.
           tests:
             - not_null
+    
     - name: product
       description: Tabela com informações dos produtos.
       columns:
@@ -197,6 +198,7 @@ sources:
             - not_null
         - name: suffix
           description: Coluna com o sufixo da pessoa.
+    
     - name: customer
       description: Tabela com as informações gerais dos clientes.
       columns:
@@ -211,6 +213,7 @@ sources:
           description: Coluna com o ID da loja.
         - name: territoryid
           description: Coluna com o ID do território.
+    
     - name: store
       description: Tabela com as informações gerais da loja.
       columns:
@@ -227,14 +230,128 @@ sources:
           description: Coluna com o ID do vendedor.
           tests:
             - not_null
+    
     - name: salesterritory
       description: Tabela com as informações dos territórios de vendas.
       columns:
         - name: territoryid
           description: Coluna com o ID do território de vendas.
+          tests:
+            - unique
+            - not_null
         - name: name
           description: Coluna com o nome do território de vendas.
+          tests:
+            - not_null
         - name: countryregioncode
           description: Coluna com o código do país que o território de vendas pertence.
+          tests:
+            - not_null
         - name: group
           description: Coluna com o nome do grupo que o território de vendas pertence.
+          tests:
+            - not_null
+    
+    - name: salesorderheader
+      description: Tabela com as informações das ordens.
+      columns:
+        - name: salesorderid
+          description: Coluna com o ID do pedido do pedido.
+          tests:
+            - not_null
+        - name: customerid
+          description: Coluna com o ID do cliente do pedido.
+          tests:
+            - not_null
+        - name: salespersonid
+          description: Coluna com o ID do vendedor do pedido.
+        - name: territoryid
+          description: Coluna com o ID do território do pedido.
+          tests:
+            - not_null
+        - name: billtoaddressid
+          description: Coluna com o ID do endereço de cobrança do pedido.
+        - name: shiptoaddressid
+          description: Coluna com o ID do endereço do pedido.
+          tests:
+            - not_null
+        - name: shipmethodid
+          description: Coluna com o ID do método de envio do pedido.
+          tests:
+            - not_null
+        - name: creditcardid
+          description: Coluna com o ID do cartão de crédito do pedido.
+        - name: currencyrateid
+          description: Coluna com o ID do câmbio usado no pedido.
+        - name: orderdate
+          description: Coluna com a data do pedido do pedido.
+          tests:
+            - not_null
+        - name: duedate
+          description: Coluna com a data do faturamento do pedido.
+          tests:
+            - not_null
+        - name: shipdate
+          description: Coluna com a data de envio do pedido.
+          tests:
+            - not_null
+        - name: subtotal
+          description: Coluna com o valor subtotal do pedido.
+          tests:
+            - not_null
+        - name: taxamt
+          description: Coluna com o valor total dos impostos do pedido.
+          tests:
+            - not_null
+        - name: freight
+          description: Coluna com o valor de frete do pedido.
+          tests:
+            - not_null
+        - name: totaldue
+          description: Coluna com o valor total do pedido.
+          tests:
+            - not_null
+        - name: status
+          description: Coluna com o status do pedido.
+          tests:
+            - not_null
+        - name: onlineorderflag
+          description: Coluna com a informação se o pedido foi via venda online.
+          tests:
+            - not_null
+        - name: accountnumber
+          description: Coluna com o código da conta do pedido.
+          tests:
+            - not_null
+
+    - name: salesorderdetail
+      description: Tabela com os detalhes das ordens da tabela "salesorderheader".
+      columns:
+        - name: salesorderid
+          description: Coluna com o ID da ordem.
+          tests:
+            - not_null
+        - name: salesorderdetailid
+          description: Coluna com o ID do detalhe da ordem.
+          tests:
+            - not_null
+        - name: productid
+          description: Coluna com o ID do produto.
+          tests:
+            - not_null
+        - name: specialofferid
+          description: Coluna com o ID da oferta referente a ordem.
+          tests:
+            - not_null
+        - name: orderqty
+          description: Coluna com a quantidade referente a ordem.
+          tests:
+            - not_null
+        - name: unitprice
+          description: Coluna com o preço unitário referente a ordem.
+          tests:
+            - not_null
+        - name: unitpricediscount
+          description: Coluna com o desconto unitário referente a ordem.
+          tests:
+            - not_null
