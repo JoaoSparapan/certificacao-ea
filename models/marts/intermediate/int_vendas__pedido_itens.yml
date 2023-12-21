@@ -1,0 +1,97 @@
+version: 2
+
+models:
+  - name: int_vendas__pedido_itens
+    description: Modelo intermediário que faz a relação 1-N de pedidos para itens.
+    columns:
+      - name: pk_vendas
+        description: Coluna com a chave primária da relação pedidos para itens.
+        tests:
+          - unique
+          - not_null
+      - name: id_pedido
+        description: Coluna com o ID do pedido do pedido.
+        tests:
+          - not_null
+      - name: id_cliente
+        description: Coluna com o ID do cliente do pedido.
+        tests:
+          - not_null
+      - name: id_vendedor
+        description: Coluna com o ID do vendedor do pedido.
+      - name: id_territorio
+        description: Coluna com o ID do território do pedido.
+        tests:
+          - not_null
+      - name: id_endereco
+        description: Coluna com o ID do endereço do pedido.
+        tests:
+          - not_null
+      - name: id_metodo_envio
+        description: Coluna com o ID do método de envio do pedido.
+        tests:
+          - not_null
+      - name: id_cartao_credito
+        description: Coluna com o ID do cartão de crédito do pedido.
+      - name: id_cambio
+        description: Coluna com o ID do câmbio usado no pedido.
+      - name: id_detalhe_pedido
+        description: Coluna com o ID do detalhe do pedido.
+        tests:
+          - not_null
+      - name: id_produto
+        description: Coluna com o ID do produto pedido.
+        tests:
+          - not_null
+      - name: id_oferta
+        description: Coluna com o ID da oferta do pedido.
+        tests:
+          - not_null
+      - name: quantidade_ordem_detalhe
+        description: Coluna com a quantidade do pedido.
+        tests:
+          - not_null
+      - name: preco_unitario_ordem
+        description: Coluna com o preço unitário do pedido.
+        tests:
+          - not_null
+      - name: desconto_percentual_por_unidade
+        description: Coluna com o percentual do desconto do pedido.
+        tests:
+          - not_null
+      - name: data_pedido
+        description: Coluna com a data do pedido do pedido.
+        tests:
+          - not_null
+      - name: data_faturamento
+        description: Coluna com a data do faturamento do pedido.
+        tests:
+          - not_null
+      - name: data_envio
+        description: Coluna com a data de envio do pedido.
+        tests:
+          - not_null
+      - name: status
+        description: Coluna com o status do pedido.
+        tests:
+          - not_null
+      - name: venda_online
+        description: Coluna com a informação se o pedido foi via venda online.
+        tests:
+          - not_null
+      - name: valor_pedido
+        description: Coluna com o valor do pedido.
+        tests:
+          - not_null
+      - name: valor_impostos
+        description: Coluna com o valor dos impostos do pedido.
+        tests:
+          - not_null
+      - name: valor_frete
+        description: Coluna com o valor do frete do pedido.
+        tests:
+          - not_null
+      - name: valor_pedido_total
+        description: Coluna com o valor total do pedido.
+        tests:
+          - not_null
