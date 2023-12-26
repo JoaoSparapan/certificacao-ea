@@ -1,0 +1,146 @@
+version: 2
+models:
+  - name: fct_vendas
+    description: Tabela com fatos de vendas cada linha descreve informações de um produto vendido.
+    columns:
+      - name: sk_venda
+        description: Coluna com a chave primária da fato vendas.
+        tests:
+          - unique
+          - not_null
+      - name: id_pedido
+        description: Coluna com o ID do pedido.
+        tests:
+          - not_null
+      - name: id_produto
+        description: Coluna com o ID do produto do pedido.
+        tests:
+          - not_null
+      - name: sk_motivo_venda
+        description: Coluna com o ID do motivo da venda.    
+      - name: quantidade_ordem_detalhe
+        description: Coluna com a quantidade do pedido.
+        tests:
+          - not_null
+      - name: preco_unitario_ordem
+        description: Coluna com o preço unitário do pedido.
+        tests:
+          - not_null
+      - name: desconto_percentual_por_unidade
+        description: Coluna com o percentual do desconto do pedido.
+        tests:
+          - not_null
+      - name: data_pedido
+        description: Coluna com a data do pedido do pedido.
+        tests:
+          - not_null
+      - name: data_faturamento
+        description: Coluna com a data do faturamento do pedido.
+        tests:
+          - not_null
+      - name: data_envio
+        description: Coluna com a data de envio do pedido.
+        tests:
+          - not_null
+      - name: status
+        description: Coluna com o status do pedido.
+        tests:
+          - not_null
+      - name: venda_online
+        description: Coluna com a informação se o pedido foi via venda online.
+        tests:
+          - not_null
+      - name: valor_pedido
+        description: Coluna com o valor do pedido.
+        tests:
+          - not_null
+      - name: valor_impostos
+        description: Coluna com o valor dos impostos do pedido.
+        tests:
+          - not_null
+      - name: valor_frete
+        description: Coluna com o valor do frete do pedido.
+        tests:
+          - not_null
+      - name: valor_pedido_total
+        description: Coluna com o valor total do pedido.
+        tests:
+          - not_null
+      - name: nome_produto
+        description: Coluna com o nome dos produtos.
+        tests:
+          - not_null
+      - name: nome_categoria_produto
+        description: Coluna com o nome da categoria dos produtos.
+        tests:
+          - not_null
+      - name: nome_subcategoria_produto
+        description: Coluna com o nome da subcategoria dos produtos.
+        tests:
+          - not_null
+      - name: quantidade_minima_produto
+        description: Coluna com a quantidade de estoque recomendada do produto.
+        tests:
+          - not_null
+      - name: nivel_reabastecimento_produto
+        description: Coluna com a quantidade que faz necessário o reabastecimento do produto.
+        tests:
+          - not_null
+      - name: custo_produto
+        description: Coluna com o custo do produto.
+        tests:
+          - not_null
+      - name: preco_listado_produto
+        description: Coluna com o preço do produto.
+        tests:
+          - not_null
+      - name: nome_cliente
+        description: Coluna com o nome completo, incluindo pronome de tratamento e sufixo, do cliente.
+      - name: nome_loja
+        description: Coluna com o nome da loja atrelada ao cliente.
+      - name: nome_cidade
+        description: Coluna com nome da cidade.
+        tests:
+          - not_null
+      - name: codigo_postal_cidade
+        description: Coluna com código postal da cidade.
+        tests:
+          - not_null
+      - name: nome_estado
+        description: Coluna com nome do estado.
+        tests:
+          - not_null
+      - name: nome_pais
+        description: Coluna com o nome do país.
+        tests:
+          - not_null
+      - name: nome_territorio
+        description: Coluna com o nome do território.
+        tests:
+          - not_null
+      - name: grupo_territorio
+        description: Coluna com o grupo em que território está contido.
+        tests:
+          - not_null
+      - name: nome_motivo
+        description: Coluna que indica o motivo do cliente ter realizado a compra. Podem haver mais de um motivo.
+      - name: tipo_motivo
+        description: Coluna que indica a categoria do motivo do cliente ter realizado a compra. Podem haver mais de um tipo de motivo.
+      - name: tipo_cartao
+        description: Coluna com tipo do cartão.
+      - name: valor_total_negociado
+        description: Coluna com o resultado do valor unitário e quantidade vendidada.
+        tests:
+          - not_null
+      - name: valor_total_negociado_liquido
+        description: Coluna com o resultado do valor unitário e quantidade vendidada com desconto.
+        tests:
+          - not_null
+      - name: frete_por_item
+        description: Coluna com o valor do frete unitário.
+        tests:
+          - not_null
+      - name: imposto_por_item
+        description: Coluna com o valor do imposto unitário.
+        tests:
+          - not_null

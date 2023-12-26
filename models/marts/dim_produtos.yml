@@ -12,6 +12,8 @@ models:
 
         - name: nome_produto
           description: Coluna com o nome dos produtos.
+          tests:
+          - not_null
 
         - name: nome_categoria_produto
           description: Coluna com o nome da categoria dos produtos.
@@ -21,13 +23,21 @@ models:
 
         - name: quantidade_minima_produto
           description: Coluna com a quantidade de estoque recomendada do produto.
+          tests:
+          - not_null
 
         - name: nivel_reabastecimento_produto
           description: Coluna com a quantidade que faz necessário o reabastecimento do produto.
+          tests:
+          - not_null
 
         - name: custo_produto
           description: Coluna com o custo do produto.
+          tests:
+          - not_null
 
         - name: preco_listado_produto
           description: Coluna com o preço do produto.
+          tests:
+          - not_null
 
