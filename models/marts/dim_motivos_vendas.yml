@@ -17,7 +17,6 @@ models:
         description: Coluna com ID dos motivos dos pedidos.
         tests:
           - not_null 
-
       - name: nome_motivo
         description: Coluna que indica o motivo do cliente ter realizado a compra. Podem haver mais de um motivo.
         tests:

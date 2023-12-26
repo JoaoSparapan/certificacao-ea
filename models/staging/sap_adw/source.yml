@@ -247,10 +247,6 @@ sources:
           description: Coluna com o código do país que o território de vendas pertence.
           tests:
             - not_null
-        - name: group
-          description: Coluna com o nome do grupo que o território de vendas pertence.
-          tests:
-            - not_null
     
     - name: salesorderheader
       description: Tabela com as informações das ordens.
