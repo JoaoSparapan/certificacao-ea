@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: dim_motivo_venda
+  - name: dim_motivos_vendas
     description: Tabela dimensão com as vendas realizadas pela adventure works e seus respectivos motivos.
     columns:
       - name: sk_motivo_venda
