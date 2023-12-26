@@ -16,8 +16,6 @@ models:
         description: Coluna com o ID do produto do pedido.
         tests:
           - not_null
-      - name: sk_motivo_venda
-        description: Coluna com o ID do motivo da venda.    
       - name: quantidade_ordem_detalhe
         description: Coluna com a quantidade do pedido.
         tests:
@@ -124,8 +122,6 @@ models:
           - not_null
       - name: nome_motivo
         description: Coluna que indica o motivo do cliente ter realizado a compra. Podem haver mais de um motivo.
-      - name: tipo_motivo
-        description: Coluna que indica a categoria do motivo do cliente ter realizado a compra. Podem haver mais de um tipo de motivo.
       - name: tipo_cartao
         description: Coluna com tipo do cartão.
       - name: valor_total_negociado
