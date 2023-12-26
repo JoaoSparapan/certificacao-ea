@@ -13,16 +13,7 @@ models:
         description: Coluna com a chave primária da tabela de pedidos e seus respectivos motivos.
         tests:
           - not_null
-      - name: id_motivo
-        description: Coluna com ID dos motivos dos pedidos.
-        tests:
-          - not_null 
       - name: nome_motivo
-        description: Coluna que indica o motivo do cliente ter realizado a compra. Podem haver mais de um motivo.
+        description: Coluna que indica o motivo do cliente ter realizado a compra. Podem haver mais de um motivo e se for o caso, aparecem separados por vírgula.
         tests:
-          - not_null 
-
-      - name: tipo_motivo
-        description: Coluna que indica a categoria do motivo do cliente ter realizado a compra. Podem haver mais de um tipo de motivo.
-        tests:
-          - not_null 
+          - not_null

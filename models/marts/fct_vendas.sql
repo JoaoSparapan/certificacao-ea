@@ -28,7 +28,6 @@ with
             {{ dbt_utils.generate_surrogate_key(['pedido_itens.id_pedido', 'produtos.id_produto', 'motivos_vendas.sk_motivo_venda']) }} as sk_venda
             , pedido_itens.id_pedido
             , produtos.id_produto
-            , motivos_vendas.sk_motivo_venda
             , pedido_itens.quantidade_ordem_detalhe
             , pedido_itens.preco_unitario_ordem
             , pedido_itens.desconto_percentual_por_unidade
@@ -56,15 +55,14 @@ with
             , enderecos.nome_pais
             , enderecos.nome_territorio
             , enderecos.grupo_territorio
-            , motivos_vendas.nome_motivo
-            , motivos_vendas.tipo_motivo
             , cartoes.tipo_cartao
+            , motivos_vendas.nome_motivo
         from pedido_itens
         left join produtos on pedido_itens.id_produto = produtos.id_produto
-        left join motivos_vendas on pedido_itens.id_pedido = motivos_vendas.id_pedido
         left join clientes on pedido_itens.id_cliente = clientes.id_cliente
         left join enderecos on pedido_itens.id_endereco = enderecos.sk_endereco
         left join cartoes on pedido_itens.id_cartao_credito = cartoes.id_cartao
+        left join motivos_vendas on pedido_itens.id_pedido = motivos_vendas.id_pedido
     )
 
     , refined_table as (
