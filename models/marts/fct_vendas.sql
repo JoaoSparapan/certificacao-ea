@@ -25,12 +25,11 @@ with
 
     , joined_tables as (
         select
-            {{ dbt_utils.generate_surrogate_key(['pedido_itens.id_pedido', 'produtos.id_produto', 'motivos_vendas.sk_motivo_venda']) }} as sk_venda
+            {{ dbt_utils.generate_surrogate_key(['pedido_itens.id_pedido', 'produtos.id_produto']) }} as sk_venda
             , pedido_itens.id_pedido
             , pedido_itens.id_cliente
             , pedido_itens.id_cartao_credito
             , pedido_itens.id_endereco
-            , motivos_vendas.sk_motivo_venda
             , produtos.id_produto
             , pedido_itens.quantidade_ordem_detalhe
             , pedido_itens.preco_unitario_ordem
@@ -60,13 +59,11 @@ with
             , enderecos.nome_territorio
             , enderecos.grupo_territorio
             , cartoes.tipo_cartao
-            , motivos_vendas.nome_motivo
         from pedido_itens
         left join produtos on pedido_itens.id_produto = produtos.id_produto
         left join clientes on pedido_itens.id_cliente = clientes.id_cliente
         left join enderecos on pedido_itens.id_endereco = enderecos.sk_endereco
-        left join cartoes on pedido_itens.id_cartao_credito = cartoes.id_cartao
-        left join motivos_vendas on pedido_itens.id_pedido = motivos_vendas.id_pedido
+        left join cartoes on pedido_itens.id_cartao_credito = cartoes.id_cartao     
     )
 
     , refined_table as (
@@ -78,4 +75,17 @@ with
         from joined_tables
     )
 
-select * from refined_table
+    , final as (
+        select
+            refined_table.*
+            , {{ dbt_utils.pivot(
+            'nome_motivo',
+            dbt_utils.get_column_values(ref('dim_motivos_vendas'), 'nome_motivo'),
+            prefix = 'motivo_'
+            ) }}
+        from refined_table
+        left join motivos_vendas on refined_table.id_pedido = motivos_vendas.id_pedido
+        {{ dbt_utils.group_by(n=38) }}
+    )
+
+select * from final
