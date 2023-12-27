@@ -27,6 +27,10 @@ with
         select
             {{ dbt_utils.generate_surrogate_key(['pedido_itens.id_pedido', 'produtos.id_produto', 'motivos_vendas.sk_motivo_venda']) }} as sk_venda
             , pedido_itens.id_pedido
+            , pedido_itens.id_cliente
+            , pedido_itens.id_cartao_credito
+            , pedido_itens.id_endereco
+            , motivos_vendas.sk_motivo_venda
             , produtos.id_produto
             , pedido_itens.quantidade_ordem_detalhe
             , pedido_itens.preco_unitario_ordem
