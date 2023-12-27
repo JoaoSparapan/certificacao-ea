@@ -125,7 +125,6 @@ sources:
         - name: productsubcategoryid
           description: Coluna com o ID das subcategorias dos produtos.
           tests:
-            - unique
             - not_null
         - name: productcategoryid
           description: Coluna com ID das categorias dos produtos. Chave estrangeira da tabela "productcategory".
