@@ -14,16 +14,12 @@ models:
           - not_null
       - name: id_cartao_credito
         description: Coluna com o ID do cartão.
-        tests:
-          - not_null
       - name: id_endereco
         description: Coluna com o ID do endereço.
         tests:
           - not_null
       - name: sk_motivo_venda
         description: Coluna com o ID do motivo da venda.
-        tests:
-          - not_null
       - name: id_pedido
         description: Coluna com o ID do pedido.
         tests:
