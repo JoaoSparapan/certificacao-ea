@@ -8,6 +8,18 @@ models:
         tests:
           - unique
           - not_null
+      - name: id_cliente
+        description: Coluna com o ID do cliente.
+        tests:
+          - not_null
+      - name: id_cartao_credito
+        description: Coluna com o ID do cartão.
+      - name: id_endereco
+        description: Coluna com o ID do endereço.
+        tests:
+          - not_null
+      - name: sk_motivo_venda
+        description: Coluna com o ID do motivo da venda.
       - name: id_pedido
         description: Coluna com o ID do pedido.
         tests:
