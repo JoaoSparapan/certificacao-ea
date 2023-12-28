@@ -70,14 +70,22 @@ with
     )
 
     , refined_table as (
-        select *
-        , count(*) over(partition by sk_venda) as vezes_que_aparece
-        , quantidade_ordem_detalhe/count(*) over(partition by sk_venda) as quantidade_por_linha
-        , (preco_unitario_ordem * quantidade_ordem_detalhe)/count(*) over(partition by sk_venda) as valor_total_negociado
-        , (preco_unitario_ordem * quantidade_ordem_detalhe) * (1 - desconto_percentual_por_unidade)/count(*) over(partition by sk_venda) as valor_total_negociado_liquido
-        , valor_frete / count(*) over(partition by id_pedido) as frete_por_item
-        , valor_impostos / count(*) over(partition by id_pedido) as imposto_por_item
+        select 
+            *
+            , count(*) over(partition by sk_venda) as vezes_que_aparece
+            , quantidade_ordem_detalhe/count(*) over(partition by sk_venda) as quantidade_por_linha
+            , (preco_unitario_ordem * quantidade_ordem_detalhe)/count(*) over(partition by sk_venda) as valor_total_negociado
+            , (preco_unitario_ordem * quantidade_ordem_detalhe) * (1 - desconto_percentual_por_unidade)/count(*) over(partition by sk_venda) as valor_total_negociado_liquido
+            , valor_frete / count(*) over(partition by id_pedido) as frete_por_item
+            , valor_impostos / count(*) over(partition by id_pedido) as imposto_por_item
         from joined_tables
     )
 
-    select * from refined_table
+    , add_atp as (
+        select
+            *
+            , (valor_total_negociado_liquido / vezes_que_aparece) as ticket_medio_por_linha
+        from refined_table
+    )
+
+    select * from add_atp
