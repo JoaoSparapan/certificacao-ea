@@ -22,7 +22,7 @@ with
         from stg_clientes clientes
         left join stg_pessoas pessoas on clientes.id_pessoa = pessoas.id_pessoa
         left join stg_lojas lojas on clientes.id_loja_cliente = lojas.id_loja
-        where pessoas.id_pessoa is not null and lojas.id_loja is not null
+        -- where pessoas.id_pessoa is not null and lojas.id_loja is not null
     )
 
 select * from joined_tables
