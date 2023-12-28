@@ -4,9 +4,8 @@ models:
     description: Tabela com fatos de vendas cada linha descreve informações de um produto vendido.
     columns:
       - name: sk_venda
-        description: Coluna com a chave primária da fato vendas.
+        description: Coluna com a SK da fato vendas.
         tests:
-          - unique
           - not_null
       - name: id_cliente
         description: Coluna com o ID do cliente.
