@@ -72,6 +72,7 @@ with
     , refined_table as (
         select *
         , count(*) over(partition by sk_venda) as vezes_que_aparece
+        , quantidade_ordem_detalhe/count(*) over(partition by sk_venda) as quantidade_por_linha
         , (preco_unitario_ordem * quantidade_ordem_detalhe)/count(*) over(partition by sk_venda) as valor_total_negociado
         , (preco_unitario_ordem * quantidade_ordem_detalhe) * (1 - desconto_percentual_por_unidade)/count(*) over(partition by sk_venda) as valor_total_negociado_liquido
         , valor_frete / count(*) over(partition by id_pedido) as frete_por_item
