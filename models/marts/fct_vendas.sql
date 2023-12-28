@@ -30,6 +30,7 @@ with
             , pedido_itens.id_cliente
             , pedido_itens.id_cartao_credito
             , pedido_itens.id_endereco
+            , motivos_vendas.sk_motivo_venda
             , produtos.id_produto
             , pedido_itens.quantidade_ordem_detalhe
             , pedido_itens.preco_unitario_ordem
@@ -59,33 +60,23 @@ with
             , enderecos.nome_territorio
             , enderecos.grupo_territorio
             , cartoes.tipo_cartao
+            , motivos_vendas.nome_motivo
         from pedido_itens
         left join produtos on pedido_itens.id_produto = produtos.id_produto
         left join clientes on pedido_itens.id_cliente = clientes.id_cliente
         left join enderecos on pedido_itens.id_endereco = enderecos.sk_endereco
-        left join cartoes on pedido_itens.id_cartao_credito = cartoes.id_cartao     
+        left join cartoes on pedido_itens.id_cartao_credito = cartoes.id_cartao
+        left join motivos_vendas on pedido_itens.id_pedido = motivos_vendas.id_pedido
     )
 
     , refined_table as (
         select *
-        , (preco_unitario_ordem * quantidade_ordem_detalhe) as valor_total_negociado
-        , (preco_unitario_ordem * quantidade_ordem_detalhe) * (1 - desconto_percentual_por_unidade) as valor_total_negociado_liquido
+        , count(*) over(partition by sk_venda) as vezes_que_aparece
+        , (preco_unitario_ordem * quantidade_ordem_detalhe)/count(*) over(partition by sk_venda) as valor_total_negociado
+        , (preco_unitario_ordem * quantidade_ordem_detalhe) * (1 - desconto_percentual_por_unidade)/count(*) over(partition by sk_venda) as valor_total_negociado_liquido
         , valor_frete / count(*) over(partition by id_pedido) as frete_por_item
         , valor_impostos / count(*) over(partition by id_pedido) as imposto_por_item
         from joined_tables
     )
 
-    , final as (
-        select
-            refined_table.*
-            , {{ dbt_utils.pivot(
-            'nome_motivo',
-            dbt_utils.get_column_values(ref('dim_motivos_vendas'), 'nome_motivo'),
-            prefix = 'motivo_'
-            ) }}
-        from refined_table
-        left join motivos_vendas on refined_table.id_pedido = motivos_vendas.id_pedido
-        {{ dbt_utils.group_by(n=38) }}
-    )
-
-select * from final
+    select * from refined_table
