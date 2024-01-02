@@ -1,0 +1,33 @@
+version: 2
+
+models:
+  - name: dim_vendedores
+    description: Tabela dimensão vendedores.
+    columns:
+        - name: id_vendedor
+          description: Coluna com o ID dos funcionários.
+          tests:
+            - unique
+            - not_null
+        - name: nome_vendedor
+          description: Coluna com o nome dos funcionários.
+          tests:
+            - not_null         
+        - name: cargo_vendedor
+          description: Coluna com o cargo dos funcionários.
+          tests:
+            - not_null
+        - name: genero_vendedor
+          description: Coluna com a descrição do sexo dos funcionários.
+          tests:
+            - not_null
+            - accepted_values:
+                values:
+                  - "M"
+                  - "F"
+        - name: data_contratacao_vendedor
+          description: Coluna com a data de contratação dos funcionários.
+          tests:
+            - not_null
+        - name: meta_anual
+          description: Coluna com a meta anual projetada.
