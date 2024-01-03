@@ -36,6 +36,7 @@ with
             , pedido_itens.id_endereco
             , motivos_vendas.sk_motivo_venda
             , produtos.id_produto
+            , pedido_itens.id_vendedor
             , pedido_itens.quantidade_ordem_detalhe
             , pedido_itens.preco_unitario_ordem
             , pedido_itens.desconto_percentual_por_unidade
