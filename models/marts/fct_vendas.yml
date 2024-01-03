@@ -13,6 +13,8 @@ models:
           - not_null
       - name: id_cartao_credito
         description: Coluna com o ID do cartão.
+      - name: id_vendedor
+        description: Coluna com o ID do vendedor.
       - name: id_endereco
         description: Coluna com o ID do endereço.
         tests:
