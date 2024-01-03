@@ -11,4 +11,11 @@ with
         from {{ source('sap_adw', 'person') }}
     )
 
-select * from fonte_pessoas
+    , agg_name as (
+        select
+            *
+            , TRIM(CONCAT(COALESCE(prefixo_pessoa,' '),' ',primeiro_nome_pessoa,' ',COALESCE(nome_meio_pessoa,' '), ' ', sobrenome_pessoa, ' ', COALESCE(sufixo_pessoa,' '))) AS nome_pessoa
+        from fonte_pessoas
+    )
+
+select * from agg_name

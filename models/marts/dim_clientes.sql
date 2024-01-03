@@ -1,8 +1,7 @@
 with
     stg_pessoas as (
-        select 
-            TRIM(CONCAT(COALESCE(prefixo_pessoa,' '),' ',primeiro_nome_pessoa,' ',COALESCE(nome_meio_pessoa,' '), ' ', sobrenome_pessoa, ' ', COALESCE(sufixo_pessoa,' '))) AS nome_cliente
-            , * 
+        select
+            * 
         from {{ ref('stg_sap__pessoas') }}
     )
     , stg_clientes as (
@@ -17,7 +16,7 @@ with
         select
             clientes.id_cliente
             , lojas.id_loja
-            , pessoas.nome_cliente
+            , pessoas.nome_pessoa as nome_cliente
             , lojas.nome_loja
         from stg_clientes clientes
         left join stg_pessoas pessoas on clientes.id_pessoa = pessoas.id_pessoa

@@ -197,6 +197,8 @@ sources:
             - not_null
         - name: suffix
           description: Coluna com o sufixo da pessoa.
+        - name: nome_pessoa
+          description: Coluna com o nome completo da pessoa.
     
     - name: customer
       description: Tabela com as informações gerais dos clientes.
@@ -350,3 +352,39 @@ sources:
           description: Coluna com o desconto unitário referente a ordem.
           tests:
             - not_null
+
+    - name: salesperson
+      description: Tabela com as informações dos vendedores.
+      columns:
+        - name: businessentityid
+          description: Coluna com ID do vendedor.
+          tests:
+            - unique
+            - not_null
+        - name: salesquota
+          description: Coluna com a meta anual projetada.
+
+    - name: employee  
+      description: Tabela com informações dos funcionários.
+      columns:
+        - name: businessentityid
+          description: Coluna com ID dos funcionários.
+          tests:
+            - unique
+            - not_null         
+        - name: jobtitle
+          description: Coluna com cargo dos funcionários.
+          tests:
+            - not_null
+        - name: gender
+          description: Coluna com descrição do sexo dos funcionários.
+          tests:
+            - not_null
+            - accepted_values:
+                values:
+                  - "M"
+                  - "F"
+        - name: hiredate
+          description: Coluna com data de contratação dos funcionários.
+          tests:
+            - not_null     
